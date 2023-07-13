@@ -1,0 +1,5 @@
+Debug
+*.bak
+.DS_Store
+.vscode/
+/*.zip
