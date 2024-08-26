@@ -9,7 +9,7 @@
     <option key="#DeviceCommand#" value="R7FA6M5BF"/>
     <option key="#RTOS#" value="_none"/>
     <option key="#pinconfiguration#" value="R7FA6M5BF2CBG.pincfg"/>
-    <option key="#FSPVersion#" value="4.4.0"/>
+    <option key="#FSPVersion#" value="4.5.0"/>
     <option key="#SELECTED_TOOLCHAIN#" value="gcc-arm-embedded"/>
     <option key="#ToolchainVersion#" value="10.3.1.20210824"/>
   </generalSettings>
@@ -75,6 +75,8 @@
       <configSetting altId="irq0.irq03.p202" configurationId="irq0.irq03"/>
       <configSetting altId="p104.output.high" configurationId="p104"/>
       <configSetting altId="p105.output.high" configurationId="p105"/>
+      <configSetting altId="p403.output.high" configurationId="p403"/>
+      <configSetting altId="p408.output.low" configurationId="p408"/>
       <configSetting altId="p608.output.high" configurationId="p608"/>
       <configSetting altId="spi1.miso.p100" configurationId="spi1.miso" isUsedByDriver="true"/>
       <configSetting altId="spi1.mosi.p101" configurationId="spi1.mosi" isUsedByDriver="true"/>

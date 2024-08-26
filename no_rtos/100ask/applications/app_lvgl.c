@@ -10,6 +10,7 @@
 #include "lv_port_indev.h"
 #include "app.h"
 #include "lv_demo_100ask/lv_100ask.h"
+#include "ebike-480x320/ui.h"
 #include <stdio.h>
 
 #define FLOYRGB565(r, g, b) ((unsigned short)((((unsigned short)(r>>3)<<11)|(((unsigned short)(g>>2))<<5)|((unsigned short)b>>3))))
@@ -28,17 +29,15 @@ void app_lvgl(void)
     }
 
     lv_init();
-
     lv_port_disp_init();
-
     lv_port_indev_init();
-
-    //lv_obj_create(lv_scr_act());
 
     //lv_demo_widgets();
     //lv_demo_music();
     //lv_demo_benchmark();
+    //lv_demo_widgets();
     lv_100ask_demo(1500);
+    //ui_init();
 
     while(1)
     {

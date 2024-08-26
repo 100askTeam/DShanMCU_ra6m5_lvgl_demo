@@ -19,12 +19,14 @@
  *********************/
 #define MY_DISP_HOR_RES     (320)
 #define MY_DISP_VER_RES     (480)
-#define DISP_BUF_SIZE       (MY_DISP_HOR_RES * 20)
+//#define MY_DISP_HOR_RES     (480)
+//#define MY_DISP_VER_RES     (320)
+#define DISP_BUF_SIZE       (MY_DISP_HOR_RES * 100)
 
 static DisplayDevice *ptDispDev;
 
 static lv_color_t buf_1[DISP_BUF_SIZE];                          /*A buffer for 10 rows*/
-static lv_color_t buf_2[DISP_BUF_SIZE];                          /*A buffer for 10 rows*/
+//static lv_color_t buf_2[DISP_BUF_SIZE];                          /*A buffer for 10 rows*/
 
 /**********************
  *      TYPEDEFS
@@ -87,8 +89,8 @@ void lv_port_disp_init(void)
     static lv_disp_draw_buf_t draw_buf_dsc_1;
     //static lv_color_t buf_1[DISP_BUF_SIZE];                          /*A buffer for 10 rows*/
     //static lv_color_t buf_2[DISP_BUF_SIZE];                          /*A buffer for 10 rows*/
-    ///lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, DISP_BUF_SIZE);   /*Initialize the display buffer*/
-    lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, buf_2, DISP_BUF_SIZE);   /*Initialize the display buffer*/
+    lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, DISP_BUF_SIZE);   /*Initialize the display buffer*/
+    ///lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, buf_2, DISP_BUF_SIZE);   /*Initialize the display buffer*/
 
     /* Example for 2) */
     //static lv_disp_draw_buf_t draw_buf_dsc_2;

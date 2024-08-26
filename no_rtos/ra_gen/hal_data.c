@@ -7,7 +7,7 @@ const iic_master_extended_cfg_t g_i2c_master2_extend =
 /* Actual calculated bitrate: 99206. Actual calculated duty cycle: 50%. */.clock_settings.brl_value = 28,
   .clock_settings.brh_value = 28, .clock_settings.cks_value = 3, };
 const i2c_master_cfg_t g_i2c_master2_cfg =
-{ .channel = 2, .rate = I2C_MASTER_RATE_STANDARD, .slave = 0x14, .addr_mode = I2C_MASTER_ADDR_MODE_7BIT,
+{ .channel = 2, .rate = I2C_MASTER_RATE_STANDARD, .slave = 0x38, .addr_mode = I2C_MASTER_ADDR_MODE_7BIT,
 #define RA_NOT_DEFINED (1)
 #if (RA_NOT_DEFINED == RA_NOT_DEFINED)
   .p_transfer_tx = NULL,

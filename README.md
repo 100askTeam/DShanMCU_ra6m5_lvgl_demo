@@ -1,3 +1,5 @@
+**瑞萨系列教程**： [http://renesas-docs.100ask.net](http://renesas-docs.100ask.net)
+
 # DShanMCU-RA6M5 lvgl综合参考示例
 
 ![DShanMCU-RA6M5_lvgl_demo效果图](./docs/images/DShanMCU-RA6M5_lvgl_demo效果图.jpg)
@@ -11,7 +13,7 @@
 
   - [DShanMCU-RA6M5开发板](https://100ask.taobao.com)
 
-- 开发板配套资料获取： [http://download.100ask.net/boards/Renesas/DShanMCU-RA6M5/index.html](http://download.100ask.net/boards/Renesas/DShanMCU-RA6M5/index.html)
+- 开发板配套资料获取： [http://renesas-docs.100ask.net](http://renesas-docs.100ask.net)
 
 ## 导入工程
 

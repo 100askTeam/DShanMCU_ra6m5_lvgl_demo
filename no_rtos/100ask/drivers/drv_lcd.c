@@ -151,7 +151,8 @@ void LCDDrvInit(struct DisplayDevice* ptDev)
     /* 初始化屏幕设备 */
     LCDDrvHWReset(); //LCD 复位
     LCDDrvWriteBlack(isLight);//点亮背光
-    
+#if 0
+
     LCDDrvWriteReg(0x11);
     LCDDrvWriteDat(0x00);
     R_BSP_SoftwareDelay(120, BSP_DELAY_UNITS_MILLISECONDS);
@@ -164,6 +165,10 @@ void LCDDrvInit(struct DisplayDevice* ptDev)
 
     LCDDrvWriteReg(0x36);
     LCDDrvWriteDat(0x48);
+
+    // Pixel Interface Format
+    LCDDrvWriteReg(0x3a);
+    LCDDrvWriteDat(0x55);
 
     LCDDrvWriteReg(0xb4);
     LCDDrvWriteDat(0x01);
@@ -230,14 +235,15 @@ void LCDDrvInit(struct DisplayDevice* ptDev)
 
     LCDDrvWriteReg(0x3a);
     LCDDrvWriteDat(0x55);
-    R_BSP_SoftwareDelay(120, BSP_DELAY_UNITS_MILLISECONDS);
 
+    R_BSP_SoftwareDelay(120, BSP_DELAY_UNITS_MILLISECONDS);
     LCDDrvWriteReg(0x29);
 
-    /////////
+    // PROTATION 90
     LCDDrvWriteReg(0x36);
-    LCDDrvWriteDat(0x48);
+    LCDDrvWriteDat(0xe8);
 
+    // set_screen_size
     LCDDrvWriteReg(0x2a);
     LCDDrvWriteDat(0x00);
     LCDDrvWriteDat(0x00);
@@ -249,6 +255,125 @@ void LCDDrvInit(struct DisplayDevice* ptDev)
     LCDDrvWriteDat(0x00);
     LCDDrvWriteDat(0x01);
     LCDDrvWriteDat(0xdf);
+
+
+#else
+    // Positive Gamma Control
+    LCDDrvWriteReg(0xe0);
+    LCDDrvWriteDat(0xf0);
+    LCDDrvWriteDat(0x3e);
+    LCDDrvWriteDat(0x30);
+    LCDDrvWriteDat(0x06);
+    LCDDrvWriteDat(0x0a);
+    LCDDrvWriteDat(0x03);
+    LCDDrvWriteDat(0x4d);
+    LCDDrvWriteDat(0x56);
+    LCDDrvWriteDat(0x3a);
+    LCDDrvWriteDat(0x06);
+    LCDDrvWriteDat(0x0f);
+    LCDDrvWriteDat(0x04);
+    LCDDrvWriteDat(0x18);
+    LCDDrvWriteDat(0x13);
+    LCDDrvWriteDat(0x00);
+
+    // Negative Gamma Control
+    LCDDrvWriteReg(0xe1);
+    LCDDrvWriteDat(0x0f);
+    LCDDrvWriteDat(0x37);
+    LCDDrvWriteDat(0x31);
+    LCDDrvWriteDat(0x0b);
+    LCDDrvWriteDat(0x0d);
+    LCDDrvWriteDat(0x06);
+    LCDDrvWriteDat(0x4d);
+    LCDDrvWriteDat(0x34);
+    LCDDrvWriteDat(0x38);
+    LCDDrvWriteDat(0x06);
+    LCDDrvWriteDat(0x11);
+    LCDDrvWriteDat(0x01);
+    LCDDrvWriteDat(0x18);
+    LCDDrvWriteDat(0x13);
+    LCDDrvWriteDat(0x00);
+    
+    // Power Control 1
+    LCDDrvWriteReg(0xc0);
+    LCDDrvWriteDat(0x18);
+    LCDDrvWriteDat(0x17);
+
+    // Power Control 2
+    LCDDrvWriteReg(0xc1);
+    LCDDrvWriteDat(0x41);
+
+    // Power Control 3
+    LCDDrvWriteReg(0xc5);
+    LCDDrvWriteDat(0x00);
+
+    // VCOM Control
+    LCDDrvWriteReg(0x1a);
+    LCDDrvWriteDat(0x80);
+
+    // Memory Access Control
+    LCDDrvWriteReg(0x36);
+    LCDDrvWriteDat(0x48);
+
+    // Pixel Interface Format
+    LCDDrvWriteReg(0x3a);
+    LCDDrvWriteDat(0x55);
+
+    // Interface Mode Control
+    LCDDrvWriteReg(0xb0);
+    LCDDrvWriteDat(0x00);
+
+    // Frame Rate Control
+    LCDDrvWriteReg(0xb1);
+    LCDDrvWriteDat(0xa0);
+
+    // Display Inversion Control
+    LCDDrvWriteReg(0xb4);
+    LCDDrvWriteDat(0x02);
+
+    // Display Function Control
+    LCDDrvWriteReg(0xb6);
+    LCDDrvWriteDat(0x02);
+    LCDDrvWriteDat(0x02);
+
+    // Set image function
+    LCDDrvWriteReg(0xe9);
+    LCDDrvWriteDat(0x00);
+
+    //Adjust Control 3
+    LCDDrvWriteReg(0xf7);
+    LCDDrvWriteDat(0xa9);
+    LCDDrvWriteDat(0x51);
+    LCDDrvWriteDat(0x2c);
+    LCDDrvWriteDat(0x82);
+
+    // Write_memory_start
+    LCDDrvWriteReg(0x21);
+    R_BSP_SoftwareDelay(120, BSP_DELAY_UNITS_MILLISECONDS);
+    //Exit Sleep
+    LCDDrvWriteReg(0x11);
+    R_BSP_SoftwareDelay(120, BSP_DELAY_UNITS_MILLISECONDS);
+    //Display on
+    LCDDrvWriteReg(0x29);
+    R_BSP_SoftwareDelay(120, BSP_DELAY_UNITS_MILLISECONDS);
+
+    // PROTATION 90
+    //LCDDrvWriteReg(0x36);
+    //LCDDrvWriteDat(0xe8);
+
+    // set_screen_size
+    LCDDrvWriteReg(0x2a);
+    LCDDrvWriteDat(0x00);
+    LCDDrvWriteDat(0x00);
+    LCDDrvWriteDat(0x01);
+    LCDDrvWriteDat(0x3f);
+
+    LCDDrvWriteReg(0x2b);
+    LCDDrvWriteDat(0x00);
+    LCDDrvWriteDat(0x00);
+    LCDDrvWriteDat(0x01);
+    LCDDrvWriteDat(0xdf);
+#endif
 }
 
 void LCDDrvSetDisplayOn(struct DisplayDevice* ptDev)

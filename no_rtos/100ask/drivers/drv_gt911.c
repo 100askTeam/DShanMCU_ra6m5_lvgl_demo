@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#if 0
 static void I2C2WaitTxCplt(void);
 static void I2C2WaitRxCplt(void);
 
@@ -187,7 +188,19 @@ static void GT911DrvInit(struct TouchDev *ptDev)
     if(NULL == ptDev->name) return;
     uint8_t buf[4];
     gTP.ucAddr = (uint8_t)g_i2c_master2.p_cfg->slave;
-    gTP.tRotation = TP_ROT_NONE;
+    gTP.tRotation = TP_ROT_90;
+
+    /* 选择地址 */
+    // 0x14
+    g_ioport.p_api->pinWrite (g_ioport.p_ctrl, BSP_IO_PORT_04_PIN_03, BSP_IO_LEVEL_LOW);
+    g_ioport.p_api->pinWrite (g_ioport.p_ctrl, BSP_IO_PORT_04_PIN_08, BSP_IO_LEVEL_HIGH);
+    R_BSP_SoftwareDelay (10, BSP_DELAY_UNITS_MILLISECONDS);
+
+    g_ioport.p_api->pinWrite (g_ioport.p_ctrl, BSP_IO_PORT_04_PIN_03, BSP_IO_LEVEL_HIGH);
+    R_BSP_SoftwareDelay (100, BSP_DELAY_UNITS_MILLISECONDS);
+
+    g_ioport.p_api->pinCfg (g_ioport.p_ctrl, BSP_IO_PORT_04_PIN_08, IOPORT_CFG_PORT_DIRECTION_INPUT);
+    //R_BSP_SoftwareDelay (100, BSP_DELAY_UNITS_MILLISECONDS);
 
     /* 初始化I2C驱动 */
     fsp_err_t err = g_i2c_master2.p_api->open(g_i2c_master2.p_ctrl, g_i2c_master2.p_cfg);
@@ -198,13 +211,13 @@ static void GT911DrvInit(struct TouchDev *ptDev)
     }
 
     /* 读ID */
-    //uint32_t nVendorID = GT911DrvReadVendorID();
+    uint32_t nVendorID = GT911DrvReadVendorID();
     //printf("gt911 vendor id: 0x%.4x\r\n", (int)nVendorID);
 
-    //uint32_t nProductID = GT911DrvReadProductID();
+    uint32_t nProductID = GT911DrvReadProductID();
     //printf("gt911 product id: 0x%.4x\r\n", (int)nProductID);
 
-    //uint8_t nVersion = GT911DrvReadVersion();
+    uint8_t nVersion = GT911DrvReadVersion();
     //printf("version = 0x%x\r\n", nVersion);
 
     GT911DrvReadReg(0x8048, buf, 2);
@@ -306,4 +319,5 @@ static bool GT911DrvRead(struct TouchDev *ptDev, unsigned short *pX, unsigned sh
     return false;
 }
 
+#endif
 
