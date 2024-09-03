@@ -195,10 +195,10 @@ static bool FT5x06DrvRead(struct TouchDev *ptDev, unsigned short *pX, unsigned s
 #define CFG_MAX_TOUCH_POINTS  5
 #define CFG_POINT_READ_BUF  (3 + 6 * (CFG_MAX_TOUCH_POINTS))
 
-    unsigned short tmp_p;
+    //unsigned short tmp_p;
     uint8_t buf[CFG_POINT_READ_BUF] = {0};
-    int ret = -1;
-    int i;
+    //int ret = -1;
+    //int i;
     int touch_point;    
 
     FT5x06DrvReadReg(0, buf, CFG_POINT_READ_BUF);

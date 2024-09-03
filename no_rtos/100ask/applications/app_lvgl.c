@@ -9,8 +9,7 @@
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
 #include "app.h"
-#include "lv_demo_100ask/lv_100ask.h"
-#include "ebike-480x320/ui.h"
+#include "lv_100ask_desktop_square/lv_100ask_desktop_square.h"
 #include <stdio.h>
 
 #define FLOYRGB565(r, g, b) ((unsigned short)((((unsigned short)(r>>3)<<11)|(((unsigned short)(g>>2))<<5)|((unsigned short)b>>3))))
@@ -25,23 +24,26 @@ void app_lvgl(void)
     err = gpt_timer_init(&g_timer0_lv_tick_inc_ctrl, &g_timer0_lv_tick_inc_cfg );
     if(FSP_SUCCESS != err)
     {
-        return;
+        //return;
     }
 
     lv_init();
     lv_port_disp_init();
     lv_port_indev_init();
 
+    //lv_tick_set_cb(HAL_GetTick);
+    //lv_delay_set_cb(HAL_Delay);
+
     //lv_demo_widgets();
     //lv_demo_music();
     //lv_demo_benchmark();
     //lv_demo_widgets();
-    lv_100ask_demo(1500);
-    //ui_init();
+
+    lv_100ask_desktop_square();
 
     while(1)
     {
-        lv_task_handler();
+        lv_timer_handler();
         R_BSP_SoftwareDelay(5, BSP_DELAY_UNITS_MILLISECONDS);  // delay 5ms
     }
 }
