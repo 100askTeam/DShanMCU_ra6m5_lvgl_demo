@@ -121,7 +121,7 @@ static void LCDDrvWriteBuf(uint8_t* buf, uint32_t size)
 {
     //LCDDrvWriteReg(0x3C);
     LCDDrvWriteDCX(isData);
-    
+#if 0
     unsigned char *pbuf = (unsigned char*)buf;
     while(size)
     {
@@ -138,6 +138,10 @@ static void LCDDrvWriteBuf(uint8_t* buf, uint32_t size)
         size = size - length;
         pbuf = pbuf + length;
     }
+#endif
+    fsp_err_t err = g_spi1.p_api->write(g_spi1.p_ctrl, buf, size, SPI_BIT_WIDTH_8_BITS);
+    assert(FSP_SUCCESS==err);
+    LCDDrvWaitTX();
 }
 
 void LCDDrvInit(struct DisplayDevice* ptDev)
