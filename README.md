@@ -17,6 +17,11 @@
 
 ## 导入工程
 
+克隆仓库： 
+
+- Github： git clone --recurse-submodules https://github.com/100askTeam/DShanMCU_ra6m5_lvgl_demo.git
+- Gitee： git clone --recurse-submodules https://gitee.com/weidongshan/DShanMCU_ra6m5_lvgl_demo.git
+
 打开e2 stduio 之后，按照如下步骤导入项目工程：
 ![从e2stduio导入工程1](./docs/images/从e2stduio导入工程1.jpg)
 ![从e2stduio导入工程2](./docs/images/从e2stduio导入工程2.jpg)
