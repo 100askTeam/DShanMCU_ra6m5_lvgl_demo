@@ -1,0 +1,6 @@
+[submodule "no_rtos/100ask/applications/lv_lib_100ask"]
+	path = no_rtos/100ask/applications/lv_lib_100ask
+	url = https://gitee.com/weidongshan/lv_lib_100ask.git
+[submodule "no_rtos/100ask/applications/lv_100ask_ui"]
+	path = no_rtos/100ask/applications/lv_100ask_ui
+	url = https://gitee.com/weidongshan/lv_100ask_ui.git

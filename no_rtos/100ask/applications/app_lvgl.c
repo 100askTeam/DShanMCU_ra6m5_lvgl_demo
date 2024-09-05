@@ -9,7 +9,7 @@
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
 #include "app.h"
-#include "lv_100ask_generic_ui_small/lv_100ask_generic_ui_small.h"
+#include "lv_100ask_ui/lv_100ask_generic_ui_small/lv_100ask_generic_ui_small.h"
 #include <stdio.h>
 
 #define FLOYRGB565(r, g, b) ((unsigned short)((((unsigned short)(r>>3)<<11)|(((unsigned short)(g>>2))<<5)|((unsigned short)b>>3))))
