@@ -3,9 +3,14 @@
 
 iic_master_instance_ctrl_t g_i2c_master2_ctrl;
 const iic_master_extended_cfg_t g_i2c_master2_extend =
-{ .timeout_mode = IIC_MASTER_TIMEOUT_MODE_SHORT, .timeout_scl_low = IIC_MASTER_TIMEOUT_SCL_LOW_ENABLED,
-/* Actual calculated bitrate: 99206. Actual calculated duty cycle: 50%. */.clock_settings.brl_value = 28,
-  .clock_settings.brh_value = 28, .clock_settings.cks_value = 3, };
+{ .timeout_mode = IIC_MASTER_TIMEOUT_MODE_SHORT,
+  .timeout_scl_low = IIC_MASTER_TIMEOUT_SCL_LOW_ENABLED,
+  .smbus_operation = 0,
+  /* Actual calculated bitrate: 99206. Actual calculated duty cycle: 50%. */.clock_settings.brl_value = 28,
+  .clock_settings.brh_value = 28,
+  .clock_settings.cks_value = 3,
+  .clock_settings.sddl_value = 0,
+  .clock_settings.dlcs_value = 0, };
 const i2c_master_cfg_t g_i2c_master2_cfg =
 { .channel = 2, .rate = I2C_MASTER_RATE_STANDARD, .slave = 0x38, .addr_mode = I2C_MASTER_ADDR_MODE_7BIT,
 #define RA_NOT_DEFINED (1)
@@ -92,8 +97,10 @@ const gpt_extended_cfg_t g_timer0_lv_tick_inc_extend =
 #else
           .capture_b_irq = FSP_INVALID_VECTOR,
 #endif
-          .capture_filter_gtioca = GPT_CAPTURE_FILTER_NONE,
-          .capture_filter_gtiocb = GPT_CAPTURE_FILTER_NONE,
+          .compare_match_value =
+          { /* CMP_A */0x0, /* CMP_B */0x0 },
+          .compare_match_status = (0U << 1U) | 0U, .capture_filter_gtioca = GPT_CAPTURE_FILTER_NONE, .capture_filter_gtiocb =
+                  GPT_CAPTURE_FILTER_NONE,
 #if 0
     .p_pwm_cfg                   = &g_timer0_lv_tick_inc_pwm_extend,
 #else
@@ -118,6 +125,7 @@ const gpt_extended_cfg_t g_timer0_lv_tick_inc_extend =
           .gtior_setting.gtior = 0U,
 #endif
         };
+
 const timer_cfg_t g_timer0_lv_tick_inc_cfg =
 { .mode = TIMER_MODE_PERIODIC,
 /* Actual period: 0.001 seconds. Actual duty: 50%. */.period_counts = (uint32_t) 0x186a0,

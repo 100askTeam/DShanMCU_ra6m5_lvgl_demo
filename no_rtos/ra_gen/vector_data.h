@@ -26,8 +26,8 @@ void iic_master_eri_isr(void);
 #define SPI1_TEI_IRQn          ((IRQn_Type) 1) /* SPI1 TEI (Transmission complete event) */
 #define VECTOR_NUMBER_SPI1_ERI ((IRQn_Type) 2) /* SPI1 ERI (Error) */
 #define SPI1_ERI_IRQn          ((IRQn_Type) 2) /* SPI1 ERI (Error) */
-#define VECTOR_NUMBER_DMAC1_INT ((IRQn_Type) 3) /* DMAC1 INT (DMAC transfer end 1) */
-#define DMAC1_INT_IRQn          ((IRQn_Type) 3) /* DMAC1 INT (DMAC transfer end 1) */
+#define VECTOR_NUMBER_DMAC1_INT ((IRQn_Type) 3) /* DMAC1 INT (DMAC1 transfer end) */
+#define DMAC1_INT_IRQn          ((IRQn_Type) 3) /* DMAC1 INT (DMAC1 transfer end) */
 #define VECTOR_NUMBER_GPT0_COUNTER_OVERFLOW ((IRQn_Type) 4) /* GPT0 COUNTER OVERFLOW (Overflow) */
 #define GPT0_COUNTER_OVERFLOW_IRQn          ((IRQn_Type) 4) /* GPT0 COUNTER OVERFLOW (Overflow) */
 #define VECTOR_NUMBER_IIC2_RXI ((IRQn_Type) 5) /* IIC2 RXI (Receive data full) */

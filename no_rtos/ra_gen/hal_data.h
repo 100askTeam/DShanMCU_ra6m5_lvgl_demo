@@ -40,7 +40,7 @@ extern dmac_instance_ctrl_t g_transfer1_ctrl;
 extern const transfer_cfg_t g_transfer1_cfg;
 
 #ifndef g_spi1_tx_transfer_callback
-void g_spi1_tx_transfer_callback(dmac_callback_args_t *p_args);
+void g_spi1_tx_transfer_callback(transfer_callback_args_t *p_args);
 #endif
 /** SPI on SPI Instance. */
 extern const spi_instance_t g_spi1;

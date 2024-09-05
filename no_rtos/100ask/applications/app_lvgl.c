@@ -9,12 +9,21 @@
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
 #include "app.h"
-#include "lv_100ask_desktop_square/lv_100ask_desktop_square.h"
+#include "lv_100ask_generic_ui_small/lv_100ask_generic_ui_small.h"
 #include <stdio.h>
 
 #define FLOYRGB565(r, g, b) ((unsigned short)((((unsigned short)(r>>3)<<11)|(((unsigned short)(g>>2))<<5)|((unsigned short)b>>3))))
 
 static fsp_err_t gpt_timer_init(gpt_instance_ctrl_t * p_timer_ctrl, const timer_cfg_t * p_timer_cfg);
+
+static void blink_led_timer(lv_timer_t * timer)
+{
+    static bsp_io_level_t level = BSP_IO_LEVEL_LOW;
+
+    if(level == BSP_IO_LEVEL_LOW) level = BSP_IO_LEVEL_HIGH;
+    else level = BSP_IO_LEVEL_LOW;
+    g_ioport.p_api->pinWrite(g_ioport.p_ctrl, BSP_IO_PORT_04_PIN_00, level);
+}
 
 void app_lvgl(void)
 {
@@ -39,7 +48,9 @@ void app_lvgl(void)
     //lv_demo_benchmark();
     //lv_demo_widgets();
 
-    lv_100ask_desktop_square();
+    lv_timer_create(blink_led_timer, 1000, NULL);
+
+    lv_100ask_generic_ui_small();
 
     while(1)
     {

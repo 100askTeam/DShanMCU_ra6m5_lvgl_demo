@@ -20,6 +20,7 @@
             <slot name="P300" secure="true"/>
         </peripheral>
         <peripheral name="PORT4" group="PORT">
+            <slot name="P400" secure="true"/>
             <slot name="P403" secure="true"/>
             <slot name="P408" secure="true"/>
             <slot name="P409" secure="true"/>
