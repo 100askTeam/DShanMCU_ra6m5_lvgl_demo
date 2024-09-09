@@ -9,7 +9,7 @@
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
 #include "app.h"
-#include "lv_100ask_ui/lv_100ask_generic_ui_small/lv_100ask_generic_ui_small.h"
+#include "lv_100ask_ui/lv_100ask_generic_ui/lv_100ask_generic_ui.h"
 #include <stdio.h>
 
 #define FLOYRGB565(r, g, b) ((unsigned short)((((unsigned short)(r>>3)<<11)|(((unsigned short)(g>>2))<<5)|((unsigned short)b>>3))))
@@ -50,7 +50,7 @@ void app_lvgl(void)
 
     lv_timer_create(blink_led_timer, 1000, NULL);
 
-    lv_100ask_generic_ui_small();
+    lv_100ask_generic_ui();
 
     while(1)
     {

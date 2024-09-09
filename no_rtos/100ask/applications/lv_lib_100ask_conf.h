@@ -79,7 +79,7 @@
 #endif
 #if LV_USE_100ASK_SKETCHPAD
     /* set sketchpad default size */
-    #define SKETCHPAD_DEFAULT_WIDTH                     480    /*LV_HOR_RES*/
+    #define SKETCHPAD_DEFAULT_WIDTH                     320    /*LV_HOR_RES*/
     #define SKETCHPAD_DEFAULT_HEIGHT                    480     /*LV_VER_RES*/
 
     /*test*/
